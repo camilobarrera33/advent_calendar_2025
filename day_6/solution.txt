@@ -1,0 +1,25 @@
+import math
+
+# Read file
+with open('day_6/input.txt', 'r') as f:
+    content = f.readlines()
+
+for i in range(len(content)):
+    content[i] = content[i].split(" ")
+
+result = []
+for i in range(len(content[0])):
+    numbers = []
+    if content[-1][i] != " ":
+        for j in range(len(content)):
+            numbers.append(content[j][i])
+        if content[-1][i] == "+":
+            result.appen(sum(numbers))
+        else:
+            math.prod(numbers)
+
+final_result = sum(result)
+print(f"Final answer is {final_result"})
+
+    
+            
