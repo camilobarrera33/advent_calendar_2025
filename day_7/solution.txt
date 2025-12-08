@@ -1,0 +1,26 @@
+# Read input
+with open('day_7/input.txt', 'r') as f:
+    content = f.readlines()
+
+for i in range(len(content)):
+    content[i] = content[i].strip('\n')
+
+# Find the index where the letter 'S' is in the first line
+first_line = content[0]
+for i in range(len(first_line)):
+    if first_line[i] == 'S':
+        idx = i
+        break
+
+# Start projecting down the beam
+beam = {idx: 1}
+split_count = 0
+for i in len(content[1:]):
+    for j in beam.keys:
+        if content[i][j] == '^':
+            beam[j-1] = 1
+            beam[j+1] = 1
+            beam.pop(j)
+            split_count += 1
+
+print(f"Final answer {split_count}")
